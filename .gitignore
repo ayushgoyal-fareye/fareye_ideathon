@@ -1,0 +1,41 @@
+# === Virtual Environments ===
+myvenv/
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# === Environment Variables (CRITICAL) ===
+.env
+*.env
+.secrets
+.token
+
+# === Python Cache ===
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# === Database & Docker ===
+# If you store Mongo data in a local folder
+data/db/
+*.log
+docker-compose.override.yml
+
+# === IDEs ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === AI/ML Model Weights ===
+# Only ignore these if they are very large and downloaded automatically
+# models/
+# *.bin
+# *.pth
