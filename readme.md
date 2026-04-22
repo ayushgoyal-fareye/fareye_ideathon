@@ -37,9 +37,6 @@ ANTHROPIC_API_KEY=your_openrouter_or_anthropic_api_key_here
 
 # Telegram Bot Token (from @BotFather)
 TELEGRAM_KEY=your_telegram_bot_token_here
-
-# MongoDB Variables
-MONGO_URI=your_mongodb_connection_string
 ```
 
 ### 4. Running the Application
