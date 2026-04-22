@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel,HttpUrl
 from typing import List
 from business_logic.data_logic import Data_Logic
+from datetime import datetime
 
 router = APIRouter(
     prefix="/data",
@@ -9,10 +10,14 @@ router = APIRouter(
 )
 
 class Data(BaseModel):
+    jira_id:str
     problem:str
     Screenshots:List[str]
     RCA:str
     solution:str
+    assignee:str
+    clientId:str
+    updatedDate: datetime
 
 class Query(BaseModel):
     problem:str

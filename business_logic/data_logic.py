@@ -4,18 +4,27 @@ from tools.RAG import RAG
 from tools.Image import ImageComparator
 from services.Mongo import MongoDBManager
 from tools.claude import TicketResolver
+from datetime import datetime
 class Data(BaseModel):
+    jira_id:str
     problem:str
     Screenshots:List[str]
     RCA:str
     solution:str
+    assignee:str
+    client_id:str
+    updatedDate: datetime
 
 class MongoData(BaseModel):
+    jira_id:str
     problem:str
     prob_emb:List[float]
     Screenshots:Dict[str,str]
     RCA:str
     solution:str
+    assignee:str
+    clientId:str
+    updatedDate: datetime
 
 class Query(BaseModel):
     problem:str
@@ -39,11 +48,15 @@ class Data_Logic:
                     raise Exception("something broke")
                 my_dict[str(i)]=str(hash)
             mydata = MongoData(
+            jira_id=data.jira_id,
             problem=data.problem,
             prob_emb=Prob_emb,
             Screenshots=my_dict,
             RCA=data.RCA,
-            solution=data.solution
+            solution=data.solution,
+            assignee=data.assignee,
+            clientId=data.clientId,
+            updatedDate=data.updatedDate
             )
             
             return self.mongodb.insert_incident(mydata);

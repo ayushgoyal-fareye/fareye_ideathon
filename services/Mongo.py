@@ -3,12 +3,17 @@ from pymongo.errors import ConnectionFailure, PyMongoError
 from pydantic import BaseModel,HttpUrl
 from typing import List,Dict
 import numpy as np
+from datetime import datetime
 class MongoData(BaseModel):
+    jira_id:str
     problem:str
     prob_emb:List[float]
     Screenshots:Dict[str,str]
     RCA:str
     solution:str
+    assignee:str
+    clientId:str
+    updatedDate: datetime
 
 class MongoDBManager:
     def __init__(self, host="localhost", port=27017, db_name="support_db"):
@@ -52,7 +57,8 @@ class MongoDBManager:
         try:
             # 1. Fetch tickets (limiting fields to save memory)
             all_tickets = list(self.collection.find({}, {
-                "prob_emb": 1, "problem": 1, "solution": 1, "RCA": 1
+
+                "jira_id": 1, "prob_emb": 1, "problem": 1, "solution": 1, "RCA": 1,"assignee":1,"updatedDate":1,"client_id":1
             }))
             
             if not all_tickets:
