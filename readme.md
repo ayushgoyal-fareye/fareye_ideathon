@@ -38,8 +38,11 @@ ANTHROPIC_API_KEY=your_openrouter_or_anthropic_api_key_here
 # Telegram Bot Token (from @BotFather)
 TELEGRAM_KEY=your_telegram_bot_token_here
 ```
-
-### 4. Running the Application
+### 4. MongoDB Connection
+```
+in mongodb file u will find init function change it to match urs config
+```
+### 5. Running the Application
 
 **To start the FastAPI server & Swagger UI:**
 ```bash
